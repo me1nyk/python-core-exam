@@ -19,18 +19,26 @@ Task 01 — Типи, цикли, умови (15 балів)
     Напишіть функцію `count_evens(numbers)`, яка приймає список цілих чисел
     і повертає кількість парних чисел у ньому.
 """
+from token import STRING
 
 
 def classify_number(n: int) -> str:
-    # TODO: реалізуйте функцію
-    pass
-
+    return "negative" if n < 0 else "zero" if n == 0 else "positive"
 
 def fizzbuzz(n: int) -> list[str]:
-    # TODO: реалізуйте функцію
-    pass
+    result = []
+    for n in range(1, n + 1):
+        if n % 3 == 0 and n % 5 == 0:
+            result.append("FizzBuzz")
+        elif n % 3 == 0:
+            result.append("Fizz")
+        elif n % 5 == 0:
+            result.append("Buzz")
+        else:
+            result.append(str(n))
+    return result
+
 
 
 def count_evens(numbers: list[int]) -> int:
-    # TODO: реалізуйте функцію
-    pass
+    return len([n for n in numbers if n % 2 == 0])
