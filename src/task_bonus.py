@@ -26,27 +26,47 @@ Task Bonus — TextAnalyzer (+10 балів)
 Примітка: словом вважається послідовність літер (без пунктуації).
 Використайте re.findall(r"[a-zA-Z]+", text) для отримання слів.
 """
-
 import re
 from collections import Counter
+from itertools import count
+from unittest import removeResult
 
 
 class TextAnalyzer:
     def __init__(self, text: str):
-        # TODO: реалізуйте клас
-        pass
+        self.text = text
+        self.words = re.findall(r"[a-zA-Z]+", text.lower())
 
     def word_count(self) -> int:
-        pass
-
+        return len(self.words)
     def unique_words(self) -> set:
-        pass
+        return set(self.words)
 
-    def most_common(self, n: int) -> list[tuple]:
-        pass
-
+    def most_common(self):
+        result = []
+        for word in self.words:
+            count = 0
+            for word1 in self.words:
+                if word1 == word:
+                    count += 1
+            result.append((word, count))
+        return set(result) #функція працює якщо вивести окремо її в іншу файл просто повертає слова і їх кількість в різній послідовності
     def longest_word(self) -> str:
-        pass
-
+        longest = 0
+        s = ''
+        self.words.sort()
+        print(self.words)
+        for word in self.words:
+            if len(word) > longest:
+                longest = len(word)
+                s = word
+        return s
     def average_word_length(self) -> float:
-        pass
+        suma_target = 0
+        for word in self.words:
+            for target in word:
+                suma_target += 1
+        return suma_target / len(self.words)
+
+
+
