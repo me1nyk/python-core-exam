@@ -33,49 +33,48 @@ import math
 class Stack:
     def __init__(self):
         # TODO: реалізуйте клас
-        pass
+        self._data = []
 
     def push(self, item):
-        pass
+        self.item = list.append()
+
 
     def pop(self):
-        pass
+      if len(self._data) == 0:
+          raise IndexError
 
     def peek(self):
-        pass
+        peek = self._data[-1]
 
     def is_empty(self) -> bool:
-        pass
-
+      pass
     def __len__(self) -> int:
         pass
-
-
 class Shape(ABC):
     @abstractmethod
     def area(self) -> float:
         pass
 
-
 class Circle(Shape):
     def __init__(self, radius: float):
         # TODO: реалізуйте клас
-        pass
-
+        self.radius = radius
+        math.pi*(radius**2)
     def area(self) -> float:
-        pass
+        return self.radiu
 
     def __str__(self) -> str:
-        pass
+       pass
 
 
 class Rectangle(Shape):
     def __init__(self, width: float, height: float):
         # TODO: реалізуйте клас
-        pass
-
+        self.width = width
+        self.height = height
+        self.area = self.width * self.height
     def area(self) -> float:
-        pass
+
 
     def __str__(self) -> str:
         pass
@@ -84,16 +83,18 @@ class Rectangle(Shape):
 class Temperature:
     def __init__(self, celsius: float):
         # TODO: реалізуйте клас
-        pass
+        self.celsius = celsius
 
     @property
     def celsius(self) -> float:
-        pass
+       return self._celsius
 
     @celsius.setter
     def celsius(self, value: float):
-        pass
-
+      if value < -273.15:
+          raise ValueError ("Temperature below absolute zero")
+         self._celsius = value
+      pass
     @property
     def fahrenheit(self) -> float:
-        pass
+        return (self._celsius * 9 / 5) + 32
