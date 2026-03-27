@@ -33,22 +33,26 @@ import math
 class Stack:
     def __init__(self):
         # TODO: реалізуйте клас
-        pass
+        self.data = []
 
     def push(self, item):
-        pass
+        self.data.append(item)
 
     def pop(self):
-        pass
+        if self.data:
+            return self.data.pop()
+        else:
+            raise IndexError("Stack is empty")
 
     def peek(self):
-        pass
+        return self.data[-1]
 
     def is_empty(self) -> bool:
-        pass
+        return not self.data
+
 
     def __len__(self) -> int:
-        pass
+        return len(self.data)
 
 
 class Shape(ABC):
@@ -60,40 +64,47 @@ class Shape(ABC):
 class Circle(Shape):
     def __init__(self, radius: float):
         # TODO: реалізуйте клас
-        pass
+        self.radius = radius
+
 
     def area(self) -> float:
-        pass
+        return math.pi * (self.radius ** 2)
 
     def __str__(self) -> str:
-        pass
+        return f"Circle: area={self.area():.2f}"
 
 
 class Rectangle(Shape):
     def __init__(self, width: float, height: float):
         # TODO: реалізуйте клас
-        pass
+        self.width = width
+        self.height = height
 
     def area(self) -> float:
-        pass
+        return self.width * self.height
 
     def __str__(self) -> str:
-        pass
+        return f"Rectangle: area={self.area():.2f}"
 
 
 class Temperature:
     def __init__(self, celsius: float):
         # TODO: реалізуйте клас
-        pass
+        self.celsius = celsius
+
 
     @property
     def celsius(self) -> float:
-        pass
+        self.celsius = self._celsius
+        return self._celsius
+
 
     @celsius.setter
     def celsius(self, value: float):
-        pass
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero")
+        self._celsius = value
 
     @property
     def fahrenheit(self) -> float:
-        pass
+        return (self.celsius * 9/5) + 32
