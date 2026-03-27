@@ -15,13 +15,22 @@ Task 02 — Функції + рядки (10 балів)
 
 
 def reverse_words(sentence: str) -> str:
-    # TODO: реалізуйте функцію
-    pass
+    words = sentence.split()
+    reversed_words = words[::-1]
+    return " ".join(reversed_words)
+
 
 
 def is_palindrome(s: str) -> bool:
-    # TODO: реалізуйте функцію
-    pass
+    clean_word = s.lower().replace(" ", "")
+    if clean_word == clean_word[::-1]:
+        return True
+    else:
+        return False
+
+
+
+
 
 
 
