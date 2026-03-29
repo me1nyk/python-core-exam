@@ -27,29 +27,31 @@ Task 04 — ООП: Stack, Shape, Temperature (20 балів)
 """
 
 from abc import ABC, abstractmethod
-import math
+
 
 
 class Stack:
     def __init__(self):
-        # TODO: реалізуйте клас
-        pass
+        self.items = []
 
     def push(self, item):
-        pass
+        self.items.append(item)
 
     def pop(self):
-        pass
+        if not self.items:
+            raise IndexError("pop from empty stack")
+        return self.items.pop()
 
     def peek(self):
-        pass
+        if not self.items:
+            raise IndexError("peek from empty stack")
+        return self.items[-1]
 
-    def is_empty(self) -> bool:
-        pass
+    def is_empty(self):
+        return len(self.items) == 0
 
-    def __len__(self) -> int:
-        pass
-
+    def __len__(self):
+        return len(self.items)
 
 class Shape(ABC):
     @abstractmethod
@@ -59,41 +61,53 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius: float):
+        self.radius = radius
+
         # TODO: реалізуйте клас
         pass
 
     def area(self) -> float:
+        return 3.14159 * self.radius ** 2
         pass
 
     def __str__(self) -> str:
+        return "Circle: area={:.2f}".format(self.area())
+
         pass
 
 
 class Rectangle(Shape):
     def __init__(self, width: float, height: float):
+        self.width = width
+        self.height = height
         # TODO: реалізуйте клас
         pass
 
     def area(self) -> float:
+        return self.width * self.height
         pass
 
     def __str__(self) -> str:
+        return "Rectangle: area={:.2f}".format(self.area())
         pass
 
 
 class Temperature:
-    def __init__(self, celsius: float):
-        # TODO: реалізуйте клас
-        pass
+    def __init__(self, celsius):
+        self._celsius = None
+        self.celsius = celsius
 
     @property
-    def celsius(self) -> float:
-        pass
+    def celsius(self):
+        return self._celsius
 
     @celsius.setter
-    def celsius(self, value: float):
-        pass
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero")
+        self._celsius = value  # ✅ ВАЖЛИВО!
 
     @property
-    def fahrenheit(self) -> float:
+    def fahrenheit(self):
+        return self._celsius * 9 / 5 + 32
         pass

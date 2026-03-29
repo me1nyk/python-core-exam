@@ -30,23 +30,42 @@ Task Bonus — TextAnalyzer (+10 балів)
 import re
 from collections import Counter
 
+from pygments.lexer import words
+import re
+from collections import Counter
+
 
 class TextAnalyzer:
     def __init__(self, text: str):
-        # TODO: реалізуйте клас
-        pass
+        self.text = text
+
+    # Приватний метод для отримання списку слів
+    def _get_words(self) -> list[str]:
+        # Розбиваємо на слова, видаляємо пунктуацію
+        words = re.findall(r'\b\w+\b', self.text.lower())
+        return words
 
     def word_count(self) -> int:
-        pass
+        return len(self._get_words())
 
-    def unique_words(self) -> set:
-        pass
+    def unique_words(self) -> set[str]:
+        return set(self._get_words())
 
-    def most_common(self, n: int) -> list[tuple]:
-        pass
+    def most_common(self, n: int) -> list[tuple[str, int]]:
+        words = self._get_words()
+        counter = Counter(words)
+        return counter.most_common(n)
 
     def longest_word(self) -> str:
-        pass
+        words = self._get_words()
+        if not words:
+            return ''
+        # Сортуємо спочатку за довжиною спадання, потім за алфавітом
+        return sorted(words, key=lambda w: (-len(w), w))[0]
 
     def average_word_length(self) -> float:
-        pass
+        words = self._get_words()
+        if not words:
+            return 0.0
+        avg = sum(len(w) for w in words) / len(words)
+        return round(avg, 2)
