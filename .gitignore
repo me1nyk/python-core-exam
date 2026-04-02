@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 solutions.py
 hints.py
+.idea
