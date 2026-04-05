@@ -32,68 +32,55 @@ import math
 
 class Stack:
     def __init__(self):
-        # TODO: реалізуйте клас
-        pass
-
+        self.items = []
     def push(self, item):
-        pass
-
+        self.items.append(item)
     def pop(self):
-        pass
-
+        if len(self.items) == 0:
+            raise IndexError("Stack empty")
+        return self.items.pop()
     def peek(self):
-        pass
-
+        if len(self.items) == 0:
+            raise IndexError("Stack empty")
+        return self.items[-1]
     def is_empty(self) -> bool:
-        pass
-
+        return len(self.items) == 0
     def __len__(self) -> int:
-        pass
-
-
+        return len(self.items)
 class Shape(ABC):
     @abstractmethod
     def area(self) -> float:
         pass
-
-
 class Circle(Shape):
     def __init__(self, radius: float):
-        # TODO: реалізуйте клас
-        pass
-
+        self.radius = radius
     def area(self) -> float:
-        pass
+        return  (self.radius**2) * math.pi
 
     def __str__(self) -> str:
-        pass
-
+        return f"Circle: area={self.area():.2f}"
 
 class Rectangle(Shape):
     def __init__(self, width: float, height: float):
-        # TODO: реалізуйте клас
-        pass
-
+        self.width = width
+        self.height = height
     def area(self) -> float:
-        pass
+        return self.width * self.height
 
     def __str__(self) -> str:
-        pass
-
-
+        return f"Rectangle: area={self.area():.2f}"
 class Temperature:
     def __init__(self, celsius: float):
-        # TODO: реалізуйте клас
-        pass
-
+        self.celsius = celsius
     @property
     def celsius(self) -> float:
-        pass
-
-    @celsius.setter
-    def celsius(self, value: float):
-        pass
-
+        return self._celsius
     @property
     def fahrenheit(self) -> float:
-        pass
+        fahrenheit = (self._celsius * 9/5) + 32
+        return fahrenheit
+    @celsius.setter
+    def celsius(self, value: float):
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero")
+        self._celsius = value

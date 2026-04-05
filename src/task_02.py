@@ -12,16 +12,19 @@ Task 02 — Функції + рядки (10 балів)
     паліндромом (ігноруйте регістр і пробіли), інакше False.
     Приклад: "A man a plan a canal Panama" → True
 """
+import shlex
+from pickletools import string1
 
 
 def reverse_words(sentence: str) -> str:
-    # TODO: реалізуйте функцію
-    pass
-
-
+    list = sentence.split(' ')
+    return " ".join(list[::-1])
 def is_palindrome(s: str) -> bool:
-    # TODO: реалізуйте функцію
-    pass
+    s = s.replace(' ', '').lower()
+    s1 = s[::-1]
+    return s == s1
+
+
 
 
 
