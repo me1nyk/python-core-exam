@@ -23,6 +23,7 @@ def prime_generator():
     pass
 
 
+
 def retry(times: int):
     # TODO: реалізуйте декоратор
     pass
