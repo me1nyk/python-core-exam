@@ -22,15 +22,31 @@ Task 01 — Типи, цикли, умови (15 балів)
 
 
 def classify_number(n: int) -> str:
-    # TODO: реалізуйте функцію
-    pass
+    if n < 0:
+        return "negative"
+    elif n == 0:
+        return "zero"
+    elif n > 0:
+        return "positive"
 
 
 def fizzbuzz(n: int) -> list[str]:
-    # TODO: реалізуйте функцію
-    pass
+    result = []
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            result.append("FizzBuzz")
+        elif i % 3 == 0:
+            result.append("Fizz")
+        elif i % 5 == 0:
+            result.append("Buzz")
+        else:
+            result.append(str(i))
+    return result
 
 
 def count_evens(numbers: list[int]) -> int:
-    # TODO: реалізуйте функцію
-    pass
+    result = 0
+    for i in numbers:
+        if i % 2 == 0:
+            result += 1
+    return result

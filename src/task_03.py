@@ -22,23 +22,37 @@ Task 03 — Структури даних, comprehension (20 балів)
     повертає словник {довжина: [слова_такої_довжини]}.
     Приклад: ["hi", "bye", "ok", "hey"] → {2: ["hi", "ok"], 3: ["bye", "hey"]}
 """
+from unittest import result
 
 
 def unique_sorted(numbers: list) -> list:
-    # TODO: реалізуйте функцію
-    pass
+    return sorted(set(numbers))
+
+
 
 
 def word_count(text: str) -> dict:
-    # TODO: реалізуйте функцію
-    pass
+        words = text.lower().split()
+        count = {}
+        for word in words:
+            if word in count:
+                count[word] += 1
+            else:
+                count[word] = 1
+        return count
 
 
 def squares_of_evens(numbers: list[int]) -> list[int]:
-    # TODO: реалізуйте функцію (використайте list comprehension)
-    pass
-
+    result = [
+        number**2
+        for number in numbers
+        if number % 2 == 0
+    ]
+    return result
 
 def group_by_length(words: list[str]) -> dict:
-    # TODO: реалізуйте функцію
-    pass
+    result = {}
+    for word in words:
+        words_length = len(word)
+        result.setdefault(words_length, []).append(word)
+    return result

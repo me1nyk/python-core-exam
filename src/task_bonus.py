@@ -33,20 +33,22 @@ from collections import Counter
 
 class TextAnalyzer:
     def __init__(self, text: str):
-        # TODO: реалізуйте клас
-        pass
+        self.text = text
 
-    def word_count(self) -> int:
-        pass
+    def word_count(self, text) -> int:
+        return len(self.text)
 
-    def unique_words(self) -> set:
-        pass
+    def unique_words(self, text) -> set:
+        self.text = self.text.lower()
+        return sorted(set(self.text))
 
     def most_common(self, n: int) -> list[tuple]:
-        pass
 
-    def longest_word(self) -> str:
-        pass
+
+    def longest_word(self, text) -> str:
+
+
+
 
     def average_word_length(self) -> float:
         pass
