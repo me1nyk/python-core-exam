@@ -25,20 +25,36 @@ Task 03 — Структури даних, comprehension (20 балів)
 
 
 def unique_sorted(numbers: list) -> list:
+    return sorted(set(numbers))
     # TODO: реалізуйте функцію
     pass
 
 
 def word_count(text: str) -> dict:
+    words = text.lower().split()
+    result = {}
+    for word in words:
+        if word not in result:
+            result[word] = 1
+        else:
+            result[word] += 1
+    return result
+
     # TODO: реалізуйте функцію
     pass
 
 
 def squares_of_evens(numbers: list[int]) -> list[int]:
+    return [x**2 for x in numbers if x % 2 == 0]
     # TODO: реалізуйте функцію (використайте list comprehension)
     pass
 
 
 def group_by_length(words: list[str]) -> dict:
+    result = {}
+    for word in words:
+        result.setdefault(len(word), []).append(word)
+    return result
+
     # TODO: реалізуйте функцію
     pass
